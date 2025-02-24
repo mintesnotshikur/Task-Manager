@@ -7,6 +7,12 @@ const colors = ['#FFEBEE', '#E3F2FD', '#E8F5E9', '#FFF3E0', '#F3E5F5'];
 
 let usedColors = [];
 
+window.addEventListener('keydown', (e) => {
+    if(e.key === "Enter") {
+        addTask(e);
+    }
+})
+
 function getRandomColor() {
     if (usedColors.length === colors.length) {
         usedColors = [];
@@ -120,7 +126,7 @@ function taskList(time, text, bgColor, index) {
 function renderTasks() {
     tasks.innerHTML = "";
     if (allTasks.length === 0) {
-        tasks.innerHTML = "<p>No task available</p>";
+        tasks.innerHTML = '<p style="color: #5bc0c4;">No task available</p>';
     } else {
         allTasks.slice().reverse().forEach((task, index) => {
             tasks.innerHTML += taskList(task.date, task.task, task.bgColor, allTasks.length - 1 - index);
